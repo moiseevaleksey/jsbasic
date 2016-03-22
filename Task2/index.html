@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
-	<input type="text" value="BBB">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<input type="text" value="Введите строку" onfocus="if (this.value == ' Введите строку') {this.value = '';}" 
+											  onblur="if (this.value == '') {this.value = ' Введите строку';}">
 	<input type="button" value="Count">
 	<p></p>
 	<script>
