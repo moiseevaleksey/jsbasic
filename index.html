@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
 	<script type="text/javascript">	
+		// would be better to start with i = 1
 		for (var i = 0; i <= 100; i++) {
 			if (i % 3  == 0) {
 				console.log("Fizz");
+			// double check for i%3 is redundant
 			} else if ((i % 5 == 0) && (i%3 !=0))  {
  				console.log("Buzz");
 			} else {
