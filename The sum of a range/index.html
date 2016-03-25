@@ -8,35 +8,41 @@
 <body>
 
   <script>
-
 		function range(start, end, step) {
 
    			if (!step) step = 1;
-   			
-   			var array = [];
-   			if (step >= 1) {
-    			console.log('start = '+ start);
-   				console.log('end = '+ end);  				
-	   			for (var i = start; i <= end;) {
-	   				array.push(i);
-	   				i = i+step;
-	   			}   				
-   			} else {
-   				//console.log('start = '+ start);
-   				//console.log('end = '+ end);
-   				for (var i = start; i >= end;) {
-	   				array.push(i);
-	   				i = i + step;
-	   			}
+   			if (step < 0) {
+   				var tmp = end;
+   				end = start;
+   				start = tmp;
+   				step = step * (-1);
+   				var reverse = true;
    			}
-   			console.log(array.length);
-   			return array;	
-		}
 
- /* function sum(array) {
-    
-  }*/
+   			var array = [];
+   			//console.log('start = '+ start);
+   			//console.log('end = '+ end);  				
+	   		
+	   		for (var i = start; i <= end;) {
+	   			array.push(i);
+	   			i = i+step; 				
+   			}
 
+   			//console.log(array.length);
+   			if (reverse) return array.reverse();
+   				else return array;
+ 		}
+
+
+			function sum(array) {
+				var sum = 0;
+				array.forEach(function(array){
+					sum = sum + array;
+				}
+				)
+			console.log(sum);
+			return sum;
+			}
   </script>
 
    <script src="test.js"></script>
