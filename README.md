@@ -1,2 +1,0 @@
-# jsbasic
-Aleksey Moiseev
