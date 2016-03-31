@@ -31,12 +31,14 @@
 			}
 
 		});
+		var result = [];
 		for (var i in byCenturies){
-			console.log(i + ': ' + average(byCenturies[i]));
+			result.push(i + ': ' + average(byCenturies[i]));
 		};
+		return result;
 	}
 
-	//getStatistic();
+	getStatistic();
 
 // → 16: 43.5
 //   17: 51.2
