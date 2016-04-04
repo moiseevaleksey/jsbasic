@@ -20,17 +20,11 @@
 		});
 
 		Vector.prototype.plus = function(obj) {
-			var tmp = this;
-			tmp.x = this.x + obj.x;
-			tmp.y = this.y + obj.y;
-			return tmp;
+			return new Vector(obj.x + this.x, obj.y + this.y);
 		};
 
 		Vector.prototype.minus = function(obj) {
-			var tmp = this;
-			tmp.x = this.x - obj.x;
-			tmp.y = this.y - obj.y;
-			return tmp;
+			return new Vector(this.x - obj.x , this.y - obj.y);
 		};
 		
 		 console.log(new Vector(1, 2).plus(new Vector(2, 3))); // → Vector{x: 3, y: 5}
