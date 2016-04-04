@@ -12,31 +12,33 @@
 		var Vector = function (x,y) {
 			this.x = x;
 			this.y =y;
-			this.__proto__.length = Math.sqrt(x*x + y*y);
+			//this.__proto__.length = Math.sqrt(x*x + y*y);
 		}
 
+		Object.defineProperty(Vector.prototype, "length", {
+		    get: function () { return Math.sqrt(this.x*this.x + this.y*this.y); }
+		});
 
 		Vector.prototype.plus = function(obj) {
-			// console.log(obj.x);
-			// console.log(obj.y);
-			this.x += obj.x;
-			this.y += obj.y;
-			return this;
+			var tmp = this;
+			tmp.x = this.x + obj.x;
+			tmp.y = this.y + obj.y;
+			return tmp;
 		};
 
 		Vector.prototype.minus = function(obj) {
-			// console.log(obj.x);
-			// console.log(obj.y);
-			this.x -= obj.x;
-			this.y -= obj.y;
-			return this;
+			var tmp = this;
+			tmp.x = this.x - obj.x;
+			tmp.y = this.y - obj.y;
+			return tmp;
 		};
 		
 		 console.log(new Vector(1, 2).plus(new Vector(2, 3))); // → Vector{x: 3, y: 5}
 		 console.log(new Vector(1, 2).minus(new Vector(2, 3))); // → Vector{x: -1, y: -1}
 		 console.log(new Vector(3, 4).length); // → 5
+
 	</script>
 
-   <script src="test.js"></script>
+	<script src="test.js"></script>
 </body>
 </html>
