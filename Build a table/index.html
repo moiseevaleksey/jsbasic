@@ -33,6 +33,7 @@
 				var header = headers[i];
 				var cd = document.createElement("td");
 				cd.appendChild(document.createTextNode(mountains[header]));
+				if (typeof mountains[header] == "number") {cd.style.textAlign = "right"};
 				tr.appendChild(cd);
 			}
 			node.appendChild(tr);
