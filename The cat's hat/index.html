@@ -14,23 +14,25 @@
 <img src="hat.png" id="hat" style="position: absolute">
 
 <script>
-	var cat = document.querySelector("#cat");
-	var hat = document.querySelector("#hat");
-	var angle = 0
-	var lastTime = null;
+  var cat = document.querySelector("#cat");
+  var hat = document.querySelector("#hat");
+  var angle = 0, lastTime = null;
 
-	function animate(time) {
-	if (lastTime != null)
-		angle =  angle + (time - lastTime) * 0.001;
-	lastTime = time;
+  function animate(time) {
+    if (lastTime != null)
+      angle += (time - lastTime) * 0.001;
+    lastTime = time;
 
-	var hatAngle = -angle + Math.PI;
-	hat.style.top = (Math.sin(hatAngle) * 20 + 200) + "px";
-	hat.style.left = (Math.tan(hatAngle) * 200 + 200) + "px";
-
-	requestAnimationFrame(animate);
-	}
-	requestAnimationFrame(animate);
+    cat.style.top = (Math.sin(angle) * 20 + 200) + "px";
+    cat.style.left = (Math.cos(angle) * 200 + 400) + "px";
+    var hatAngle = -angle + Math.PI;
+    
+    hat.style.top = (Math.sin(hatAngle) * 20 + 200) + "px";
+    hat.style.left = (Math.tan(hatAngle) * 200 + 400) + "px";
+    
+    requestAnimationFrame(animate);
+  }
+  requestAnimationFrame(animate);
 </script>
 
 </body>
