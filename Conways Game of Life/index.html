@@ -1,0 +1,114 @@
+<!doctype html>
+
+
+<div id="grid"></div>
+<button id="next">Next generation</button>
+<button id="run">Auto run</button>
+
+<script>
+	var checkboxes = [];
+	var arraySize = 10;
+
+	for (var i=0; i<arraySize; i++) {
+		for (var j=0; j<arraySize; j++) {
+			checkboxes[(i)*arraySize+j]=false;	
+		}
+	}
+
+	var div = document.getElementsByTagName("div");
+
+	function draw(initialArray) {
+		var div = document.querySelector("div");
+		while (div.hasChildNodes()) {
+			div.removeChild(div.firstChild);
+		}
+		document.body.removeChild(div);
+		var div = document.createElement("div");
+	for (var i=0; i < arraySize; i++) {
+		for (var j = 0; j<arraySize; j++) {
+			var ch = document.createElement("INPUT");
+			ch.setAttribute("type", "checkbox");
+			var id;
+			id = i*arraySize+j;
+			ch.setAttribute("id", id);
+			if (initialArray[id] == true) ch.setAttribute("checked",true);
+			div.appendChild(ch);
+			document.body.appendChild (div);}
+		var br =document.createElement("br");
+		div.appendChild(br);
+		document.body.appendChild(div);
+	};
+	checkboxes = initialArray;
+	checkboxClick();
+	return checkboxes;
+	};
+
+	draw(checkboxes);
+
+	var next = document.getElementById("next");
+	next.addEventListener("click", function (){
+		draw(generateNext(checkboxes));	
+	})
+
+	function checkboxClick() {
+		var ch = document.getElementsByTagName("input");
+		for (var i=0; i<(arraySize*arraySize);i++) {
+			ch[i].addEventListener("click", function(event) {
+				if (checkboxes[event.target.id] == true) {
+					checkboxes[event.target.id] = false;
+				} else {
+					checkboxes[event.target.id] = true;
+				}
+			});
+		}
+	}
+
+
+	var auto = document.getElementById("run");
+	run.addEventListener("click", function () {
+		var autoArr=[];
+		for (var i=0; i < arraySize; i++) {
+			for (var j=0; j<arraySize; j++) {
+				var value;
+				if (Math.random()<0.5) {
+					value=false;
+				} else {
+					value = true;
+				}
+				autoArr[i * arraySize + j] = value;	
+			}}
+		draw(autoArr);
+	})
+
+	function generateNext(array) {
+		var result=[];
+		array.forEach(function(elem, num) { 
+			var cnt = 0;
+
+			if ((num % arraySize)==(arraySize-1)) { 
+				if (array[num-1]) cnt++;
+				if (array[num-(arraySize+1)])  cnt++;
+				if (array[num+(arraySize-1)]) cnt++;
+			}
+			else if ((num % arraySize) == 0) {
+				if (array[num-(arraySize-1)]) cnt++;
+				if (array[num+1]) cnt++;
+				if (array[num+(arraySize+1)])  cnt++;	
+			}
+			else {
+				if (array[num-1]) cnt++;
+				if (array[num-(arraySize+1)])  cnt++;
+				if (array[num-(arraySize-1)]) cnt++;
+				if (array[num+1]) cnt++;
+				if (array[num+(arraySize+1)])  cnt++;
+				if (array[num+(arraySize-1)]) cnt++;	
+			};
+			if (array[num+arraySize]) cnt++;
+			if (array[num-arraySize]) cnt++;
+				if (cnt==3) {result[num]=true}
+				else 	{if ((elem) && (cnt == 2)) result[num]=true;
+						else result[num]=false};
+		})
+	return result;
+	}
+</script>
