@@ -1,0 +1,728 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+  <head xmlns="">
+    <title>IBM Workstation Security Tool Results</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <meta content="2016-08-01 12:52:55" scheme="iso8601" name="DC.Date"/>
+    <meta content="$" scheme="rfc1766" name="DC.Language"/>
+    <meta content="IBM Corporation" name="DC.Publisher"/>
+    <meta content="Copyright (c) 2005 by IBM corporation" name="DC.Rights"/>
+    <meta content="IBM Workstation Security Tool Results" name="Description"/>
+    <meta content="obriencj@us.ibm.com" name="Feedback"/>
+    <meta content="wst workstation security tool" name="Keywords"/>
+    <meta content="obriencj@us.ibm.com" name="Owner"/>
+    <meta content="noindex,nofollow" name="Robots"/>
+    <meta content="IBM internal use only" name="Security"/>
+    <meta content="v8 Template Generator" name="Source"/>
+    <meta content="" scheme="IBM_ContentClassTaxonomy" name="DC.Type"/>
+    <meta content="" scheme="IBM_SubjectTaxonomy" name="DC.Subject"/>
+    <meta content="" scheme="W3CDTF" name="IBM.Effective"/>
+    <meta content="" scheme="IBM_IndustryTaxonomy" name="IBM.Industry"/>
+    <link href="data/css/v4-screen.css" type="text/css" rel="stylesheet"/>
+    <style media="all" type="text/css">
+      <!--
+@import url("data/css/screen.css");
+@import url("data/css/interior.css");
+@import url("data/css/interior-1-col.css");
+@import url("data/css/icons.css");
+@import url("data/css/portal.css");
+-->
+    </style>
+    <link media="print" href="data/css/print.css" type="text/css" rel="stylesheet"/>
+    <link href="data/css/wst.css" type="text/css" rel="stylesheet"/>
+    <script xmlns:exslt="http://exslt.org/common" xmlns:ibm="http://www.ibm.com" type="text/javascript">
+      <!--
+function twist(widget) {
+	var parent = widget.parentNode;
+	if(parent.className == "twisty-collapsed") {
+		parent.className = "twisty";
+	} else if(parent.className == "twisty") {
+		parent.className = "twisty-collapsed";
+	}
+}
+// -->
+    </script>
+    <noscript xmlns:exslt="http://exslt.org/common" xmlns:ibm="http://www.ibm.com">
+      <style type="text/css">
+        <!--
+	.twisty-collapsed div { display: block; }
+-->
+      </style>
+    </noscript>
+    <script xmlns:exslt="http://exslt.org/common" xmlns:ibm="http://www.ibm.com" type="text/javascript">
+      <!--
+
+
+function uploadPrompt() {
+  
+      var url = "data/help/win32_upload.htm";
+      
+	
+	var opts = "dialogWidth:800px;dialogHeight:375px;scroll:no;status:no;resizable:yes;help:no;dialogHide:yes";
+	return (showModalDialog(url, 0, opts) == "update");
+
+}
+
+
+function shell(cmd) {
+	var sh = new ActiveXObject("WScript.Shell");
+	return sh.run(cmd);
+}
+
+
+function uploadISAM() {
+	//var path = "C:\\progra~1\\c4ebreg\\c4ebreg.exe";
+      var path = "\"C:\\Program Files (x86)\\wst\\..\\c4ebreg\\c4ebreg.exe\"";
+
+	var flags = " /w";
+
+	try {
+		var pid = shell(path + flags);
+
+	} catch(e) {
+		alert("IBM Standard Asset Manager was not found on your system. Please contact the HelpDesk.\n\n" + e.description);
+	}
+}
+
+
+function rerunISAM() {
+      //var path = "..\\c4ebreg\\c4ebreg.exe\"";
+      //var path = "\"C:\\Program Files (x86)\\wst\\wsect.exe\"";
+      var path = "\"C:\\Program Files (x86)\\wst\\..\\c4ebreg\\c4ebreg.exe\"";
+
+	//var path="C:\\progra~1\\c4ebreg\\c4ebreg.exe";
+	var flags = " /custom \"C:\\Program Files (x86)\\wst\\isam.ini\"";
+
+	if(! confirm("You have selected the option to execute an IBM Standard Asset Manager software inventory scan.  This may take up to a few minutes to complete.  When you click OK, the WST report will close.  ISAM will scan your workstation.  Then WST will automatically restart, run a new security scan and display a new report.")) {
+		return;
+	}
+
+	try {
+		var pid = shell(path + flags);
+
+	} catch(e) {
+		alert("IBM Standard Asset Manager was not found on your system. Please contact the HelpDesk.\n\n" + e.description + path);
+	}
+
+	window.onunload = new function() {};
+	window.close()
+}
+
+
+function uploadOnUnload() {
+	if(uploadPrompt()) uploadISAM();
+}
+
+
+window.onunload = uploadOnUnload;
+
+
+var rerunning = 0;
+
+
+function rerunScan() {
+	if(rerunning) return;
+	rerunning = 1;
+
+	document.body.style.cursor = "wait";
+	window.onunload = new function() {};
+
+	var path = "\"C:\\Program Files (x86)\\wst\\wsect.exe\"";
+	var flags = " /v";
+
+	try {
+		var shell = new ActiveXObject("WScript.Shell");
+		var pid = shell.run(path + flags, 0, true);
+		
+	} catch(e) {
+		alert(e.description);
+	}
+
+	document.body.style.cursor = "pointer";
+	window.location.reload(true);
+}
+
+
+//-->
+    </script>
+    <script xmlns:exslt="http://exslt.org/common" xmlns:ibm="http://www.ibm.com" type="text/javascript">
+      <!--
+
+
+function print_me() {
+	window.print();
+}
+
+
+//-->
+    </script>
+    <script xmlns:exslt="http://exslt.org/common" xmlns:ibm="http://www.ibm.com" type="text/javascript">
+      <!--
+
+
+function send_email_prompt() {
+ // Feature 36841- Make "Email your Workstation Security Tool results" page translatable
+	var url = "data/help/win32_email.htm";
+	
+	var opts = "dialogWidth:550px;dialogHeight:380px;scroll:no;status:no;help:no;dialogHide:yes;resizable:yes";
+
+	// sneak the default from address into the query_string
+	var addr = "shubiano@us.ibm.com"
+	return showModalDialog(url, addr, opts);
+}
+
+
+function send_email() {
+
+	var addrs = send_email_prompt();
+	var from = addrs[0];
+	var rcpt = addrs[1];
+
+	if(! rcpt || ! from) {
+		return;
+	}
+	
+	var path = "\"C:\\Program Files (x86)\\wst\\wst-email.exe\"";
+	var flags = " -t " + rcpt + " -f " + from;
+
+	try {
+		var shell = new ActiveXObject("WScript.Shell");
+		var pid = shell.run(path + flags, 0, true);
+		
+	} catch(e) {
+		alert(e.description);
+	}
+}
+
+
+//-->
+    </script>
+  </head>
+  <body xmlns="" class="article" id="w3-ibm-com">
+    <!--start accessibility prolog-->
+    <div class="skip">
+      <a accesskey="2" href="#content-main">Skip to main content</a>
+    </div>
+    <div class="skip">
+      <a accesskey="n" href="#left-nav">Skip to navigation</a>
+    </div>
+    <div id="access-info">
+      <p class="access">The access keys for this page are:</p>
+      <ul class="access">
+        <li>ALT plus 0 links to this site's <a accesskey="0" href="http://w3.ibm.com/w3/access-stmt.html">Accessibility Statement.</a>
+        </li>
+        <li>ALT plus 1 links to the w3.ibm.com home page.</li>
+        <li>ALT plus 2 skips to main content.</li>
+        <li>ALT plus 4 skips to the search form.</li>
+        <li>ALT plus 9 links to the feedback page.</li>
+        <li>ALT plus N skips to navigation.</li>
+      </ul>
+      <p class="access">Additional accessibility information for w3.ibm.com can be found <a href="http://w3.ibm.com/w3/access-stmt.html">on the w3 Accessibility Statement page.</a>
+      </p>
+    </div>
+    <!--end accessibility prolog-->
+    <!--start masthead-->
+    <div id="masthead">
+      <h3 class="access">Start of masthead</h3>
+      <div id="prt-w3-sitemark">
+        <img src="data/pixmaps/id-w3-sitemark-simple.gif" alt="" height="33" width="54"/>
+      </div>
+      <div id="prt-ibm-logo">
+        <img src="data/pixmaps/id-ibm-logo-black.gif" alt="IBM Logo" height="15" width="44"/>
+      </div>
+      <div id="w3-sitemark">
+        <img usemap="#sitemark_map" src="data/pixmaps/id-w3-sitemark-large.gif" alt="" height="70" width="266"/>
+        <map name="sitemark_map" id="sitemark_map">
+          <area accesskey="1" href="http://w3.ibm.com/" coords="0,0,130,70" shape="rect" alt="Link to W3 Home Page"/>
+        </map>
+      </div>
+      <div id="site-title-only">IBM Workstation Security Tool Results</div>
+      <div id="ibm-logo">
+        <img src="data/pixmaps/id-ibm-logo.gif" alt="IBM Logo" height="15" width="44"/>
+      </div>
+      <div xmlns:exslt="http://exslt.org/common" xmlns:ibm="http://www.ibm.com" id="persistent-nav">
+        <a href="http://w3.ibm.com/" id="w3home">w3 home</a>
+        <a href="http://w3.ibm.com/help/" id="helpnow">HelpNow</a>
+        <a accesskey="9" href="http://w3.ibm.com/feedback/" id="feedback">Feedback</a>
+      </div>
+      <div id="browser-warning">
+        <img src="data/pixmaps/icon-system-status-alert.gif" alt="Error" height="10" width="12"/>This Web page is best used in a modern browser. Since your browser is no longer supported by IBM, please upgrade your web browser at the <a href="http://w3.ibm.com/download/">ISSI site</a>.</div>
+    </div>
+    <!--stop masthead-->
+    <!--start content-->
+    <div id="content">
+      <!--start content head-->
+      <div xmlns:exslt="http://exslt.org/common" xmlns:ibm="http://www.ibm.com" id="content-head">
+        <p id="date-stamp">
+          <b>Report generated on 2016-08-01 12:52:55</b>  (WST version 2.7.5-0000)</p>
+        <div class="hrule-dots"> </div>
+      </div>
+      <!--stop content head-->
+      <!--start main content-->
+      <div id="content-main">
+        <h1 xmlns:ibm="http://www.ibm.com">Scan Results</h1>
+        <p xmlns:ibm="http://www.ibm.com">The Workstation Security Tool has inspected your workstation for compliance with the mandatory technical security controls defined by IBM's ITCS300 security standard.  It remains your responsibility to review ITCS300 and comply with all the security measures it defines, including those not checked by the Workstation Security Tool.</p>
+        <p xmlns:ibm="http://www.ibm.com">
+          <b>Report generated for machine type-model System Product Name, serial System Serial Number.</b>
+        </p>
+        <p xmlns:ibm="http://www.ibm.com">If you would like to review your local hardware and software inventory data, click on the ISAM icon in the Windows system tray.</p>
+        <h2 xmlns:ibm="http://www.ibm.com">In this report</h2>
+        <ul xmlns:ibm="http://www.ibm.com">
+          <li>
+            <img src="data/pixmaps/fail.png" class="overall-mini"/>Items marked with a red 'X' -  The tool has determined that these security controls are noncompliant.  Corrective action is required.</li>
+          <li>
+            <img src="data/pixmaps/unknown.png" class="overall-mini"/>Items marked with a yellow question mark -  The tool was unable to determine the compliance status.  The compliance status for these security controls must be verified manually.</li>
+          <li>
+            <img src="data/pixmaps/pass.png" class="overall-mini"/>Items marked with a green check mark -  The tool verified that these security controls are compliant.</li>
+        </ul>
+        <h2 xmlns:ibm="http://www.ibm.com">Your Detailed Security Report</h2>
+        <div xmlns:exslt="http://exslt.org/common" xmlns:ibm="http://www.ibm.com" class="result">
+          <h2>Hard Drive Security Test</h2>
+          <div class="wst-help">
+            <a href="data/help/en.htm#hdpass">?</a>
+          </div>
+          <div class="result-overall">
+            <img src="data/pixmaps/pass.png" alt="Test Status: Pass" class="result-overall" title="Test Status: Pass"/>
+          </div>
+          <div class="detail">
+            <p>An approved full disk encryption solution (PGP for Windows and LUKS for Linux) is required for workstations that; store sensitive personal information (SPI), or store customer information (i.e., services organizations), or are physically removed from IBM premises.</p>
+            <div class="twisty-collapsed"/>
+            <a onclick="twist(this)">More Details</a>
+            <div>
+              <table>
+                <thead>
+                  <tr>
+                    <td colspan="5" style="text-align:center">
+                      <span class="info">PGP Encryption Test Results</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Hard Drive Encryption</td>
+                    <td>Required?       </td>
+                    <td>PGP Version Installed</td>
+                    <td>Implementation    </td>
+                    <td>Primary Drive Encrypted?</td>
+                  </tr>
+                </thead>
+                <tr>
+                  <td>
+                    <span class="pass">Installed</span>
+                  </td>
+                  <td>
+                    <span class="pass">yes/OffPremises</span>
+                  </td>
+                  <td>
+                    <span class="pass">10.3.0.9307</span>
+                  </td>
+                  <td>
+                    <span class="pass">IGA</span>
+                  </td>
+                  <td>
+                    <span class="pass">Yes</span>
+                  </td>
+                </tr>
+                <thead>
+                  <tr>
+                    <td colspan="5" style="text-align:center">
+                      <span class="info">Hard Drive Password Test Results</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Hard Drive Password  </td>
+                    <td>Workstation Type</td>
+                    <td>Required?            </td>
+                    <td>Drive supports PW?</td>
+                    <td>Password Set?           </td>
+                  </tr>
+                </thead>
+                <tr>
+                  <td>
+                    <span class="norm">Not Present</span>
+                  </td>
+                  <td>
+                    <span class="norm">Desktop</span>
+                  </td>
+                  <td>
+                    <span class="norm">No</span>
+                  </td>
+                  <td>
+                    <span class="norm">Yes</span>
+                  </td>
+                  <td>
+                    <span class="norm">No</span>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div xmlns:exslt="http://exslt.org/common" xmlns:ibm="http://www.ibm.com" class="result">
+          <h2>Desktop Screensaver Configuration</h2>
+          <div class="wst-help">
+            <a href="data/help/en.htm#screensaver">?</a>
+          </div>
+          <div class="result-overall">
+            <img src="data/pixmaps/pass.png" alt="Test Status: Pass" class="result-overall" title="Test Status: Pass"/>
+          </div>
+          <div class="detail">
+            <p>The screen saver settings for each Windows account must be set to require a password.  The timeout period must be 30 minutes or less. If you work with PCI - Payment Card Industry data, then the timeout period must be 15 minutes or less.</p>
+            <div class="twisty-collapsed"/>
+            <a onclick="twist(this)">More Details</a>
+            <div>
+              <table>
+                <thead>
+                  <tr>
+                    <td>Account</td>
+                    <td>Enabled</td>
+                    <td>Password Protected</td>
+                    <td>Timeout Period</td>
+                  </tr>
+                </thead>
+                <tr>
+                  <td>AShubianok</td>
+                  <td>
+                    <!--1-->
+                    <span class="pass">Yes</span>
+                  </td>
+                  <td>
+                    <!--1-->
+                    <span class="pass">Yes</span>
+                  </td>
+                  <td>
+                    <span class="pass">30 minutes</span>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div xmlns:exslt="http://exslt.org/common" xmlns:ibm="http://www.ibm.com" class="result">
+          <h2>Antivirus</h2>
+          <div class="wst-help">
+            <a href="data/help/en.htm#antivirus">?</a>
+          </div>
+          <div class="result-overall">
+            <img src="data/pixmaps/pass.png" alt="Test Status: Pass" class="result-overall" title="Test Status: Pass"/>
+          </div>
+          <div class="detail">
+            <p>An IBM-approved antivirus program must be installed and running, with virus signature updates scheduled to occur daily</p>
+            <div class="twisty-collapsed"/>
+            <a onclick="twist(this)">More Details</a>
+            <div>
+              <table>
+                <thead>
+                  <tr>
+                    <td>Version</td>
+                    <td>Service Status</td>
+                    <td>Live Update</td>
+                  </tr>
+                </thead>
+                <tr>
+                  <td>
+                    <span class="pass">12.1.4013.4013</span>
+                  </td>
+                  <td>
+                    <span class="pass">Running</span>
+                  </td>
+                  <td>
+                    <span class="pass">Central Managed</span>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div xmlns:exslt="http://exslt.org/common" xmlns:ibm="http://www.ibm.com" class="result">
+          <h2>Firewall Configuration</h2>
+          <div class="wst-help">
+            <a href="data/help/en.htm#firewall">?</a>
+          </div>
+          <div class="result-overall">
+            <img src="data/pixmaps/pass.png" alt="Test Status: Pass" class="result-overall" title="Test Status: Pass"/>
+          </div>
+          <div class="detail">
+            <p>An IBM-approved firewall program must be installed and running</p>
+            <div class="twisty-collapsed"/>
+            <a onclick="twist(this)">More Details</a>
+            <div>
+              <table>
+                <thead>
+                  <tr>
+                    <td>Firewall Software</td>
+                    <td>Service Status</td>
+                    <td>Enabled</td>
+                  </tr>
+                </thead>
+                <tr>
+                  <td>
+                    <span class="pass">12.1.4013.4013</span>
+                  </td>
+                  <td>
+                    <span class="pass">Running</span>
+                  </td>
+                  <td>
+                    <!--1-->
+                    <span class="pass">Yes</span>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div xmlns:exslt="http://exslt.org/common" xmlns:ibm="http://www.ibm.com" class="result">
+          <h2>Windows Network Shares</h2>
+          <div class="wst-help">
+            <a href="data/help/en.htm#winshares">?</a>
+          </div>
+          <div class="result-overall">
+            <img src="data/pixmaps/pass.png" alt="Test Status: Pass" class="result-overall" title="Test Status: Pass"/>
+          </div>
+          <div class="detail">
+            <p>Any Windows network shares must be configured to require authentication</p>
+            <div class="twisty-collapsed"/>
+            <a onclick="twist(this)">More Details</a>
+            <div>
+              <table>
+                <thead>
+                  <tr>
+                    <td>Share Name</td>
+                    <td>Directory</td>
+                    <td>Anonymous Access</td>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div xmlns:exslt="http://exslt.org/common" xmlns:ibm="http://www.ibm.com" class="result">
+          <h2>Peer-to-peer File Sharing Applications</h2>
+          <div class="wst-help">
+            <a href="data/help/en.htm#p2p">?</a>
+          </div>
+          <div class="result-overall">
+            <img src="data/pixmaps/pass.png" alt="Test Status: Pass" class="result-overall" title="Test Status: Pass"/>
+          </div>
+          <div class="detail">
+            <p>Do not install or use any Peer-to-peer file sharing utilities</p>
+            <div class="twisty-collapsed"/>
+            <a onclick="twist(this)">More Details</a>
+            <div>
+              <p>No peer-to-peer file sharing applications were found.</p>
+            </div>
+          </div>
+        </div>
+        <div xmlns:exslt="http://exslt.org/common" xmlns:ibm="http://www.ibm.com" class="result">
+          <h2>Lotus Notes Database Encryption</h2>
+          <div class="wst-help">
+            <a href="data/help/en.htm#lotusnotes">?</a>
+          </div>
+          <div class="result-overall">
+            <img src="data/pixmaps/pass.png" alt="Test Status: Pass" class="result-overall" title="Test Status: Pass"/>
+          </div>
+          <div class="detail">
+            <p>If PGP Desktop is installed and the primary hard drive is 100% encrypted, then Notes database encryption is not required.  Otherwise Lotus Notes databases containing IBM confidential data must be encrypted.</p>
+            <div class="twisty-collapsed"/>
+            <a onclick="twist(this)">More Details</a>
+            <div>
+              <p>Encrypt Lotus Notes databases that contain IBM Confidential information. Local mail files, archives, and "MyAttachment" repositories are mandatory files to be encrypted.</p>
+              <p>
+                <span class="pass">PGP Desktop is installed and the primary hard drive is 100% encrypted. Notes database encryption is not required.</span>
+              </p>
+              <table>
+                <thead>
+                  <tr>
+                    <td>Database</td>
+                    <td>Encrypted</td>
+                  </tr>
+                </thead>
+                <tr>
+                  <td>c:\Program Files (x86)\IBM\Notes 8\Data\data0\126\22354445.nsf</td>
+                  <td>Yes</td>
+                </tr>
+              </table>
+              <p>The following databases may need to be encrypted.</p>
+              <table>
+                <thead>
+                  <tr>
+                    <td>Database</td>
+                    <td>Encrypted</td>
+                  </tr>
+                </thead>
+                <tr>
+                  <td>c:\Program Files (x86)\IBM\Notes 8\Data\DEvDB.nsf</td>
+                  <td>No</td>
+                </tr>
+                <tr>
+                  <td>c:\Program Files (x86)\IBM\Notes 8\Data\as_AShubianok.nsf</td>
+                  <td>Yes</td>
+                </tr>
+                <tr>
+                  <td>c:\Program Files (x86)\IBM\Notes 8\Data\as_AShubianok1.nsf</td>
+                  <td>Yes</td>
+                </tr>
+                <tr>
+                  <td>c:\Program Files (x86)\IBM\Notes 8\Data\as_VPupkin.nsf</td>
+                  <td>Yes</td>
+                </tr>
+              </table>
+              <p>NOTE: Not ALL local Notes databases are contained in the two lists above.  The Notes databases that are listed above require encryption or are suggested for encryption.  Any Notes database that is NOT listed above is NOT recommended for Notes encryption.</p>
+            </div>
+          </div>
+        </div>
+        <div xmlns:exslt="http://exslt.org/common" xmlns:ibm="http://www.ibm.com" class="result">
+          <h2>Windows Account Password Test</h2>
+          <div class="wst-help">
+            <a href="data/help/en.htm#password">?</a>
+          </div>
+          <div class="result-overall">
+            <img src="data/pixmaps/pass.png" alt="Test Status: Pass" class="result-overall" title="Test Status: Pass"/>
+          </div>
+          <div class="detail">
+            <p>All active local Windows accounts must have a password and the password age must not exceed 90 days. The Windows security policy must be set to require a minimum password length of 8 characters, a maximum password age of 90 days, a minimum password age of 1 day, and a password history of at least 8.</p>
+            <div class="twisty-collapsed"/>
+            <a onclick="twist(this)">More Details</a>
+            <div>
+              <table>
+                <thead>
+                  <tr>
+                    <td>Account</td>
+                    <td>Full Name</td>
+                    <td>Minimum Length</td>
+                    <td>Maximum Age</td>
+                    <td>Minimum Age</td>
+                    <td>Password History</td>
+                    <td>Password Expires?</td>
+                    <td>Password Age</td>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div xmlns:exslt="http://exslt.org/common" xmlns:ibm="http://www.ibm.com" class="result">
+          <h2>Operating System</h2>
+          <div class="wst-help">
+            <a href="data/help/en.htm#oslevel">?</a>
+          </div>
+          <div class="result-overall">
+            <img src="data/pixmaps/pass.png" alt="Test Status: Pass" class="result-overall" title="Test Status: Pass"/>
+          </div>
+          <div class="detail">
+            <p>Workstations are required to have only supported operating systems installed based on your job role.</p>
+            <div class="twisty-collapsed"/>
+            <a onclick="twist(this)">More Details</a>
+            <div>
+              <p> Microsoft Windows 7 Professional  is permitted for use.<br/>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div xmlns:exslt="http://exslt.org/common" xmlns:ibm="http://www.ibm.com" class="result">
+          <h2>BigFix Install Test</h2>
+          <div class="wst-help">
+            <a href="data/help/en.htm#ospatch">?</a>
+          </div>
+          <div class="result-overall">
+            <img src="data/pixmaps/pass.png" alt="Test Status: Pass" class="result-overall" title="Test Status: Pass"/>
+          </div>
+          <div class="detail">
+            <p>BigFix is required on all workstations used within IBM.  BigFix must be installed and running and configured to point to the approved Tivoli management servers. If BigFix is not installed, not active or not configured properly, install BigFix Client from ISSI.</p>
+            <div class="twisty-collapsed"/>
+            <a onclick="twist(this)">More Details</a>
+            <div>
+              <table>
+                <thead>
+                  <tr>
+                    <td>BigFix Automatic Updates Installed</td>
+                    <td>BigFix Service Running</td>
+                    <td>Correct BigFix configuration Server</td>
+                  </tr>
+                </thead>
+                <tr>
+                  <td>
+                    <span class="pass">Yes</span>
+                  </td>
+                  <td>
+                    <span class="pass">Yes</span>
+                  </td>
+                  <td>
+                    <span class="pass">Yes</span>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div id="layout-footer">
+          <p xmlns:ibm="http://www.ibm.com" class="small-grey">Please use the instructions linked to on the navigation pane to resolve any failed items. More detailed information is available on the <a href="http://w3.ibm.com/help/solutions/gethelp.asp?sid=1&amp;tid=7_4252,8_6094">WST Solution Library in the IT Help Central Solution Finder</a>
+          </p>
+        </div>
+      </div>
+      <!--stop main content-->
+      <div id="content-sidebar">
+...
+</div>
+    </div>
+    <!--stop content-->
+    <!--start navigation-->
+    <div id="navigation">
+      <h3 class="access">Start of left navigation</h3>
+      <!--left nav-->
+      <div id="left-nav">
+        <div class="top-level">
+          <div xmlns:exslt="http://exslt.org/common" xmlns:ibm="http://www.ibm.com" class="bar-blue-med-dark">Help</div>
+          <a xmlns:exslt="http://exslt.org/common" xmlns:ibm="http://www.ibm.com" href="data/help/en.htm#hdpass">Hard Drive Security Test</a>
+          <a xmlns:exslt="http://exslt.org/common" xmlns:ibm="http://www.ibm.com" href="data/help/en.htm#screensaver">Desktop Screensaver Configuration</a>
+          <a xmlns:exslt="http://exslt.org/common" xmlns:ibm="http://www.ibm.com" href="data/help/en.htm#antivirus">Antivirus</a>
+          <a xmlns:exslt="http://exslt.org/common" xmlns:ibm="http://www.ibm.com" href="data/help/en.htm#firewall">Firewall Configuration</a>
+          <a xmlns:exslt="http://exslt.org/common" xmlns:ibm="http://www.ibm.com" href="data/help/en.htm#winshares">Windows Network Shares</a>
+          <a xmlns:exslt="http://exslt.org/common" xmlns:ibm="http://www.ibm.com" href="data/help/en.htm#p2p">Peer-to-peer File Sharing Applications</a>
+          <a xmlns:exslt="http://exslt.org/common" xmlns:ibm="http://www.ibm.com" href="data/help/en.htm#lotusnotes">Lotus Notes Database Encryption</a>
+          <a xmlns:exslt="http://exslt.org/common" xmlns:ibm="http://www.ibm.com" href="data/help/en.htm#password">Windows Account Password Test</a>
+          <a xmlns:exslt="http://exslt.org/common" xmlns:ibm="http://www.ibm.com" href="data/help/en.htm#oslevel">Operating System</a>
+          <a xmlns:exslt="http://exslt.org/common" xmlns:ibm="http://www.ibm.com" href="data/help/en.htm#ospatch">BigFix Install Test</a>
+        </div>
+      </div>
+      <div id="related-links" label="Related Links">
+        <p xmlns:exslt="http://exslt.org/common" xmlns:ibm="http://www.ibm.com" class="title">
+          <a href="#" class="refresh-link" onclick="rerunScan()">Re-run all tests</a>
+        </p>
+        <p xmlns:exslt="http://exslt.org/common" xmlns:ibm="http://www.ibm.com" class="title">
+          <a href="#" class="refresh-link" onclick="rerunISAM()">Re-run ISAM and all tests</a>
+        </p>
+        <p xmlns:exslt="http://exslt.org/common" xmlns:ibm="http://www.ibm.com" class="title">
+          <a href="#" class="print-link" onclick="print_me()">Print this report</a>
+        </p>
+        <p xmlns:exslt="http://exslt.org/common" xmlns:ibm="http://www.ibm.com" class="title">
+          <a href="#" class="email-link" onclick="send_email()">Email this report</a>
+        </p>
+        <!--start related links-->
+        <p xmlns:exslt="http://exslt.org/common" xmlns:ibm="http://www.ibm.com" class="title">Related Links</p>
+        <ul xmlns:exslt="http://exslt.org/common" xmlns:ibm="http://www.ibm.com">
+          <li>
+            <a href="http://w3.the.ibm.com/ecmweb/cybersecurity/wst_overview.html">What is WST?</a>
+          </li>
+          <li>
+            <a href="http://w3.ibm.com/transform/sas/as-web.nsf/ContentDocsByTitle/Security+and+Use+Standards+for+IBM+Employees">ITCS300 Security Standards</a>
+          </li>
+          <li>
+            <a href="https://w3.ibm.com/helpcentral/Category/65349/workstation_asset_management_wam">Workstation Asset Management</a>
+          </li>
+          <li>
+            <a href="http://w3.the.ibm.com/ecmweb/cybersecurity/index.html">IT Security Portal</a>
+          </li>
+          <li>
+            <a href="http://w3.ibm.com/helpcentral">IT Help Central</a>
+          </li>
+          <li>
+            <a href="https://w3.ibm.com/helpcentral/Content/View/b1aa87e3-af2c-4be9-bdbd-a5749103f319/ibm_hde_-_pgp_whole_disk_encryption_-_overview">PGP Whole Disk Encryption - Overview</a>
+          </li>
+        </ul>
+        <!--stop related links-->
+      </div>
+    </div>
+    <!--stop navigation-->
+  </body>
+</html>
